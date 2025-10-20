@@ -77,6 +77,8 @@ class Ball {
           this.velY = -this.velY;
           Ball.kill(ball);
           this.size *= 1.1;
+          this.velX *= 1.1;
+          this.velY *= 1.1;
         }
       }
     }
