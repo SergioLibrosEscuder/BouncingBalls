@@ -69,7 +69,15 @@ class Ball {
           ball.velY = -ball.velY;
           this.velX = -this.velX;
           this.velY = -this.velY;
+          Ball.kill(ball);
         }
+      }
+    }
+  }
+  static kill(bola) {
+    for (const ball of balls) {
+      if (ball == bola) {
+        balls.splice(balls.indexOf(ball), 1);
       }
     }
   }
