@@ -19,13 +19,14 @@ function randomRGB() {
 }
 
 class Ball {
-  constructor(x, y, velX, velY, color, size) {
+  constructor(x, y, velX, velY, color, size, lifetime) {
     this.x = x;
     this.y = y;
     this.velX = velX;
     this.velY = velY;
     this.color = color;
     this.size = size;
+    this.lifetime = lifetime;
   }
 
   draw() {
@@ -55,6 +56,11 @@ class Ball {
 
     this.x += this.velX;
     this.y += this.velY;
+    this.lifetime--;
+
+    if (this.lifetime <= 0) {
+      Ball.kill(this);
+    }
   }
 
   collisionDetect() {
@@ -95,7 +101,8 @@ while (balls.length < 25) {
     random(-7, 7),
     random(-7, 7),
     randomRGB(),
-    size
+    size,
+    random(1000, 20000)
   );
 
   balls.push(ball);
