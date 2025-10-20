@@ -111,6 +111,13 @@ while (balls.length < 25) {
   balls.push(ball);
 }
 
+function checkWin() {
+  if (balls.length == 1) {
+    alert("GAME OVER!!");
+    location.reload();
+  }
+}
+
 function loop() {
   ctx.fillStyle = "#000000";
   ctx.clearRect(0, 0, width, height);
@@ -121,6 +128,8 @@ function loop() {
     ball.update();
     ball.collisionDetect();
   }
+
+  checkWin();
 
   requestAnimationFrame(loop);
 }
